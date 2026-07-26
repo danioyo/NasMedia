@@ -1,11 +1,20 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css);
+:root {
+    --border-color: rgba(211, 211, 211, 0.8);
+}
 *{
     margin:0;
     box-sizing: border-box;
+     font-family: 'Inter', "Segoe UI", sans-serif;
+     color:white;
 }
 body{
     height:100vh;
-    background-color: rgb(180, 180, 180);
+    /* background: linear-gradient(135deg, #2c3e50, #4ca1af); */
+    background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 .navbarContainer{
     display:flex;
@@ -14,8 +23,13 @@ body{
     align-items: center;
     margin-top: 1.5rem;
 }
+.navbar a {
+    z-index: 1; 
+    padding: 0.5rem 1rem; 
+}
 .navbar{
-    background-color: white;
+    border:1px var(--border-color) solid;
+    backdrop-filter: blur(5px);
     max-width:550px;
     height: 100%;
     width:100%;
@@ -26,6 +40,18 @@ body{
     align-items: center;
     min-width: 220px;
     margin-right:2rem;
+    background: transparent;
+    position:relative;
+    overflow: hidden;
+
+
+    background: rgba(255, 255, 255, 0.12); 
+    backdrop-filter: blur(20px) saturate(200%); 
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.15),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.4);
 }
 .logo{
     padding:0 2rem;
@@ -35,7 +61,7 @@ body{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 1px solid white;
+    border: 1px solid var(--border-color);
     margin-right:2rem;
     display:flex;
     justify-content: center;
@@ -46,3 +72,31 @@ body{
 .navbarContainer a{
     cursor: pointer;
 }
+.bubble {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); 
+    height: 100%; 
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    
+
+    transition: all 0.48s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1;
+    background: linear-gradient(
+        135deg,
+        rgba(134, 134, 134, 0.4) 0%,
+        rgba(255, 255, 255, 0.15) 100%
+    );
+    backdrop-filter: blur(8px);
+    
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 1px 20px rgba(255, 255, 255, 0.6);
+
+    transition: 
+        left 0.45s cubic-bezier(0.23, 1, 0.32, 1),
+        width 0.45s cubic-bezier(0.23, 1, 0.32, 1)
+}
+
