@@ -42,7 +42,7 @@ body{
     gap:1rem;
     justify-content: space-around;
     align-items: center;
-    min-width: 220px;
+    min-width: 360px;
     margin-right:2rem;
     background: transparent;
     position:relative;
@@ -118,11 +118,71 @@ body{
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
 }
+.bigImage{
+    position:absolute;
+    top:0;
+    width: 100%;
+    height: 100vh;
+    background: 
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.68) 10%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.88) 0%,
+            rgba(0, 0, 0, 0.68) 15%,
+            rgba(0, 0, 0, 0.4) 50%,
+            rgba(0, 0, 0, 0) 100%
+        ),
+        url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    background-size: cover;
+    background-position: center;
+    }
 .heroContainer{
     position:relative;
-    width:100%;
-    height: 100vh;
-    z-index:1;
-    background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-}
+    display:flex;
 
+}
+.heroText{
+    position:absolute;
+    display:flex;
+    margin-top: 30rem; 
+    padding: 0 5rem;
+    flex-direction: column;
+}
+.heroTitle{
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem; 
+    letter-spacing: 17.5px; 
+    text-transform: uppercase;
+}
+.heroType{
+    position: relative;
+    left:-15px;
+}
+.heroType::before{
+    position:absolute;
+    content:"";
+    background-color:#1E6091;
+    max-width: 200px;
+    width:100%;
+    height: 5px;
+    top:-7px;
+    left:-7px;
+    animation: barAnimation 5s linear ;
+}
+@keyframes barAnimation {
+    0%{
+        width:0%;
+    }
+    100%{
+        width:100%;
+    }
+}
+.heroDescription{
+    max-width:425px;
+}
