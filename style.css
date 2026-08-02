@@ -71,9 +71,21 @@ body{
     margin-left: 2px;
 }
 .user-avatar{
+    display: flex;
+    position:relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.fa-chevron-down, .fa-chevron-up{
+    position:absolute;
+    left:45px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.user-avatar-icon{
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    
     border: 1px solid var(--border-color);
     margin-right:2rem;
     display:flex;
@@ -259,4 +271,26 @@ body{
 }
 #heroPlay i,#heroPlay span{
     color:inherit;
+}
+.profile{
+    display:flex;
+    flex-direction: column;
+    width:auto;
+    height:auto;
+    position: relative;
+}
+.profile-window{
+    background-color: #1E6091;
+    color:white;
+    display:flex;
+    flex-direction: column;
+}
+.profile-window-wrapper{
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 25px;
+}
+.profile-window-wrapper.active{
+    display: block;
 }

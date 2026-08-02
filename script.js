@@ -3,9 +3,15 @@ const navElem = document.querySelectorAll(".navbar a");
 const bubble = document.querySelector('.bubble');
 const movieImage = document.querySelector(".movieImage");
 const movieName = document.querySelector(".movieName");
+const profile = document.querySelector(".user-avatar");
+const profileArrow = document.querySelector(".user-avatar i")
+const profileWindowWrapper = document.querySelector(".profile-window-wrapper");
 
-
-
+profile.addEventListener("click", ()=>{
+    profileArrow.classList.toggle("fa-chevron-down");
+    profileArrow.classList.toggle("fa-chevron-up");
+    profileWindowWrapper.classList.toggle("active");
+})
 movieImage.addEventListener("mouseenter",()=>{
     movieName.style.color = "#4da2e2";
     
