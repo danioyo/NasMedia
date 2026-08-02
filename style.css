@@ -9,7 +9,7 @@
 }
 body{
     height:100vh;
-    background: linear-gradient(135deg, #2c3e50, #4ca1af);
+    background: linear-gradient(135deg, #0c0c0c, #333333);
     /* background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80'); */
     background-size: cover;
     background-position: center;
@@ -140,8 +140,7 @@ body{
         url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
     background-size: cover;
     background-position: center;
-    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%,rgba(0,0,0,0.92) 90%, rgba(0,0,0,0) 100%);
-    }
+}
 .heroContainer{
     position:relative;
     display:flex;
@@ -159,32 +158,38 @@ body{
     font-size: 5rem; 
     letter-spacing: 17.5px; 
     text-transform: uppercase;
+    max-width: 45vw;
+    line-height: 0.95;
 }
 .heroType{
     position: relative;
     left:-15px;
+    font-size: 1.5rem;
 }
 .heroType::before{
     position:absolute;
     content:"";
     background-color:#1E6091;
-    max-width: 200px;
-    width:100%;
+    width: 300px;
+
     height: 5px;
     top:-7px;
     left:-7px;
-    animation: barAnimation 5s linear ;
+    animation: barAnimation 3s linear ;
 }
 @keyframes barAnimation {
     0%{
         width:0%;
     }
     100%{
-        width:100%;
+        width: 300px;
     }
 }
 .heroDescription{
-    max-width:425px;
+    max-width:35vw;
+    min-width:30vw;
+    font-size:1.1rem;
+    line-height: 1.4;
 }
 .rowsContainer{
     margin-top: 10px;
@@ -194,21 +199,37 @@ body{
     font-size: 3rem;
     letter-spacing:-2.5px;
 }
+.posterWrapper { 
+    width: 250px;
+    height: 370px;
+    border-radius: 12px; 
+    overflow: hidden; 
+}
 .movieImage{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.movieName{
+    margin-top:5px;
+    font-size:25px;
+}
+.movieDate{
+    font-size:12px;
+    color:rgb(219, 219, 219)
 }
 .movieCard{
-    height:280px ;
-    width: 200px; 
-    border-radius: 8px; 
-
+    width: 250px;
     overflow: hidden;
-    cursor: pointer;
-    box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 8px; 
 }
-.movieCard:active{
+.movieImage:hover{
+    transform: scale(1.055);
+}
+.movieImage:active{
     filter: brightness(0.9);
 }
 .movieListContainer{
@@ -225,13 +246,13 @@ body{
     font-size:20px;
     border: none;
     cursor: pointer;
-    transition: background-color 0.25s ease, color 0.25s ease, filter 0.15s ease;
+    transition: background-color 0.25s ease, color 0.25s ease,box-shadow 1s ease, filter 0.15s ease;
 }
 #heroPlay:hover{
     background-color: #1E6091;
     color:white;
+    box-shadow: 0 0 10px rgb(255, 255, 255, 0.7);
     border: 1px solid white;
-
 }
 #heroPlay:active{
     filter: brightness(0.7);

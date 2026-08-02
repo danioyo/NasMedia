@@ -1,13 +1,20 @@
 const navbar = document.querySelector(".navbar");
 const navElem = document.querySelectorAll(".navbar a");
 const bubble = document.querySelector('.bubble');
-
-const API_KEY = '8b1e43728b1c17cc47afd3fde208e6b4';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-const HERO_IMAGE_URL = 'https://image.tmdb.org/t/p/w1280';
+const movieImage = document.querySelector(".movieImage");
+const movieName = document.querySelector(".movieName");
 
 
+
+movieImage.addEventListener("mouseenter",()=>{
+    movieName.style.color = "#4da2e2";
+    
+})
+movieImage.addEventListener("mouseleave",()=>{
+    movieName.style.color = "white";
+    
+    
+})
 function moveBubble(element){
     const width = element.offsetWidth + 62;
     const left = element.offsetLeft - (62 / 2);
