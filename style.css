@@ -203,6 +203,7 @@ body{
     height:280px ;
     width: 200px; 
     border-radius: 8px; 
+
     overflow: hidden;
     cursor: pointer;
     box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.5);
@@ -213,4 +214,28 @@ body{
 .movieListContainer{
     margin-top: 12.5px;
     margin-bottom: 40px;
+    display: flex;
+}
+#heroPlay{
+    width:200px;
+    color:black;
+    margin-top: 1.3rem;
+    border-radius: 10px;
+    height:40px;
+    font-size:20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease, color 0.25s ease, filter 0.15s ease;
+}
+#heroPlay:hover{
+    background-color: #1E6091;
+    color:white;
+    border: 1px solid white;
+
+}
+#heroPlay:active{
+    filter: brightness(0.7);
+}
+#heroPlay i,#heroPlay span{
+    color:inherit;
 }
