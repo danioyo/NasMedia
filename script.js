@@ -12,7 +12,7 @@ const profileWindow = document.querySelector(".profile-window");
 document.addEventListener("DOMContentLoaded", ()=>{
     const currentUsername = document.querySelector(".currentUsername");
     const currentUser = localStorage.getItem("username");
-
+    
     if (currentUser && currentUsername) {
         currentUsername.textContent = currentUser;
     }

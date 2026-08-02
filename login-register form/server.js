@@ -48,6 +48,7 @@ app.post("/register", async(req,res)=>{
     const id = req.body.id;
     if(username && req.body.password && id){
         const password = await bcrypt.hash(req.body.password,10);
+        if(username.length<30){
         if(id==="1234"){
             db.run(`
                 INSERT INTO users(username, password) VALUES (?,?)
@@ -64,6 +65,8 @@ app.post("/register", async(req,res)=>{
         else{
             return res.json({message: "incorrect id", success: false, id:"i"});
         }
+        }
+        else return res.json({message: "the username is too long", success: false, id:"u"})
     }
     else{
         let missing = [];

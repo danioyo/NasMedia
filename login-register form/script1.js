@@ -74,6 +74,11 @@ register.addEventListener("click", async ()=>{
             <span>!</span>unavailable username`
             inputBox.style.borderColor="rgb(153, 0, 0)"
         }
+        else if(data.message==="the username is too long"){
+            invalidUsername.innerHTML=`
+            <span>!</span>the username is too long`
+            inputBox.style.borderColor="rgb(153, 0, 0)"
+        }
     }
     else{
         console.log("bravo");
