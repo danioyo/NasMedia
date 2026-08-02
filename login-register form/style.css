@@ -8,6 +8,7 @@ body{
     background: linear-gradient(135deg, #0c0c0c, #333333);
     display: flex;
     justify-content: center;
+    user-select: none;
 }
 .container{
     background: transparent;

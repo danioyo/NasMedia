@@ -31,6 +31,7 @@ app.post("/login", async(req, res)=>{
                     }
                     else{
                         return res.json({success: true,message: "all good"});
+                        
                     }
                 })
     }
@@ -56,7 +57,7 @@ app.post("/register", async(req,res)=>{
                     else{
                         return res.json({message:"db error",success:false});
                     }
-                    return res.json({message:"logged in successfully",success:false});
+                    return res.json({message:"registered successfully",success:true});
                 });
             
         }

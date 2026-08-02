@@ -7,6 +7,16 @@ const profile = document.querySelector(".user-avatar");
 const profileArrow = document.querySelector(".user-avatar i")
 const profileWindow = document.querySelector(".profile-window");
 
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    const currentUsername = document.querySelector(".currentUsername");
+    const currentUser = localStorage.getItem("username");
+
+    if (currentUser && currentUsername) {
+        currentUsername.textContent = currentUser;
+    }
+})
 profile.addEventListener("click", ()=>{
     profileArrow.classList.toggle("fa-chevron-down");
     profileArrow.classList.toggle("fa-chevron-up");

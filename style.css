@@ -280,7 +280,7 @@ body{
 }
 .profile{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     width:auto;
     height:auto;
     position: relative;
@@ -332,4 +332,13 @@ body{
 }
 .disconnectRow:active,.accountRow:active{
     background-color: #0f3552;
+}
+.currentUsername{
+    color:white;
+    margin-right: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display:flex;
+    margin-bottom: 2px;
+    align-items:flex-end;
 }

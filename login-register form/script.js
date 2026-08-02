@@ -65,6 +65,8 @@ login.addEventListener("click", async ()=>{
     }
     else{
         console.log("Logged in successfuly!")
+        localStorage.setItem("username", username);
+        window.location.href="../index.html";
     }
 })
 eyeContainer.addEventListener("click", (event)=>{
