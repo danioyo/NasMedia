@@ -278,19 +278,47 @@ body{
     width:auto;
     height:auto;
     position: relative;
+    
 }
 .profile-window{
     background-color: #1E6091;
     color:white;
     display:flex;
     flex-direction: column;
+    border-radius:5px;
+    width:260px;
+    font-size:22.5px;
+    padding:15px 15px;
+    gap:20px;
 }
 .profile-window-wrapper{
-    display: none;
+    visibility: hidden;
     position: absolute;
     top: 100%;
     right: 25px;
+    margin-top:15.5px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+
 }
 .profile-window-wrapper.active{
-    display: block;
+    visibility: visible;
+    opacity: 1;
+}
+.disconnectRow::before{
+    content: "";
+    background-color: white;
+    width:240px;
+    position:absolute;
+    height:1px;
+    left:-5px;
+    top:-5px;
+
+}
+.disconnectRow,.accountRow{
+    position:relative;
+
+}
+.disconnectRow span, .accountRow span,.accountRow i{
+    cursor: pointer;
 }
