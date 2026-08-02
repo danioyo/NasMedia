@@ -5,12 +5,12 @@ const movieImage = document.querySelector(".movieImage");
 const movieName = document.querySelector(".movieName");
 const profile = document.querySelector(".user-avatar");
 const profileArrow = document.querySelector(".user-avatar i")
-const profileWindowWrapper = document.querySelector(".profile-window-wrapper");
+const profileWindow = document.querySelector(".profile-window");
 
 profile.addEventListener("click", ()=>{
     profileArrow.classList.toggle("fa-chevron-down");
     profileArrow.classList.toggle("fa-chevron-up");
-    profileWindowWrapper.classList.toggle("active");
+    profileWindow.classList.toggle("active");
 })
 movieImage.addEventListener("mouseenter",()=>{
     movieName.style.color = "#4da2e2";
