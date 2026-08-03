@@ -287,28 +287,84 @@ body{
     
 }
 
-.profile-window{
+.profile-window-rows{
     visibility: hidden;
-    position: absolute;
-    top: 100%;
-    right: 25px;
-    margin-top:15.5px;
     opacity: 0;
     transition: opacity 0.25s ease;
     background-color: #1E6091;
-    color:white;
-    display:flex;
+    color: white;
+    display: flex;
     flex-direction: column;
-    border-radius:5px;
-    width:260px;
-    font-size:22.5px;
-    padding:5px 5px;
-    gap:20px;
+    border-radius: 5px;
+    width: 260px;
+    font-size: 22.5px;
+    padding: 5px 5px;
+    gap: 20px;
 
 }
-.profile-window.active{
+.profile-window-rows.active{
     visibility: visible;
     opacity: 1;
+}
+.profile-window{
+    position: absolute;
+    top: 100%;
+    right: 25px;
+    margin-top: 15.5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.areYouSurePopUp{
+    background-color: white;
+    height:88px;
+    justify-content: center;
+    display:flex;
+    visibility:hidden;
+    color:#1E6091;
+    border-radius: 6px;
+    flex-direction: column;
+    position:relative;
+    overflow: hidden;
+    align-items:center;
+    gap:10px;
+}
+.areYouSurePopUp span{
+    color:inherit;
+    font-size: 22.5px;
+    font-weight: 700;
+}
+.areYouSurePopUp button{
+    cursor: pointer;
+    
+}
+.areYouSurePopUp #xButtonPopUp{
+    color:inherit;
+    position:absolute;
+    right:5px;
+    top:3px;
+    border-radius:11px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.areYouSurePopUp #yesButtonPopUp{
+    color:inherit;
+    font-weight: 500;
+    border:1px solid #1E6091;
+    border-radius: 4px;
+    font-size:15px;
+    padding:3px 12px;
+}
+.areYouSurePopUp #yesButtonPopUp:hover{
+    color:white;
+    transition: all 0.25s ease;
+    background-color:#1E6091;
+}
+.areYouSurePopUp #xButtonPopUp:hover{
+    transition: all 0.25s ease;
+    filter:brightness(0.9);
 }
 .disconnectRow::before{
     content: "";

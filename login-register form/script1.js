@@ -84,7 +84,7 @@ register.addEventListener("click", async ()=>{
     else{
         console.log("bravo");
         localStorage.setItem("username", username);
-        window.location.href = "../index.html";
+        window.location.replace("../index.html");
 
     }
 })
