@@ -13,8 +13,7 @@ const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
 
 areYouSurePopUp.addEventListener("click",(event)=>{
     if(event.target.id=="xButtonPopUp"){
-        areYouSurePopUp.style.visibility = "hidden";
-        areYouSurePopUp.style.opacity = "0";
+        areYouSurePopUp.classList.remove("active");
     }
     else if(event.target.id=="yesButtonPopUp"){
         window.location.replace("login-register form/login.html");
@@ -22,8 +21,7 @@ areYouSurePopUp.addEventListener("click",(event)=>{
 })
 profileWindowRows.addEventListener("click", (event)=>{
     if(event.target.closest(".disconnectRow")){
-        areYouSurePopUp.style.visibility = "visible";
-        areYouSurePopUp.style.opacity = "1";
+        areYouSurePopUp.classList.add("active");
     }
 } )
 document.addEventListener("DOMContentLoaded", ()=>{
@@ -37,11 +35,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
 profile.addEventListener("click", ()=>{
     if(profileArrow.classList.contains("fa-chevron-down")){
         profileArrow.classList.replace("fa-chevron-down", "fa-chevron-up");
+
     }
     else if(profileArrow.classList.contains("fa-chevron-up")){
         profileArrow.classList.replace("fa-chevron-up", "fa-chevron-down");
-        areYouSurePopUp.style.visibility = "hidden";
-        areYouSurePopUp.style.opacity = "0";
+        areYouSurePopUp.classList.remove("active");
     }
     profileWindowRows.classList.toggle("active");
 })
