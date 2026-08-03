@@ -47,6 +47,7 @@ register.addEventListener("click", async ()=>{
         },
         body: JSON.stringify({password, username, id})
     })
+    
     const data = await response.json();
     console.log(data);
     if(!data.success){
@@ -82,5 +83,8 @@ register.addEventListener("click", async ()=>{
     }
     else{
         console.log("bravo");
+        localStorage.setItem("username", username);
+        window.location.href = "../index.html";
+
     }
 })

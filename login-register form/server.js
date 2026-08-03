@@ -53,10 +53,11 @@ app.post("/register", async(req,res)=>{
             db.run(`
                 INSERT INTO users(username, password) VALUES (?,?)
                 `, [username, password], (err)=>{
-                    if(err.message.includes("UNIQUE")){return res.json({message:"unavailable username", err: err, success:false})}
-                    
-                    else{
-                        return res.json({message:"db error",success:false});
+                    if (err) {
+                        if (err.message.includes("UNIQUE")) {
+                            return res.json({ message: "unavailable username", err: err, success: false });
+                        }
+                        return res.json({ message: "db error", success: false });
                     }
                     return res.json({message:"registered successfully",success:true});
                 });
