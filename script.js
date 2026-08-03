@@ -11,6 +11,8 @@ const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
 
 
 
+
+
 areYouSurePopUp.addEventListener("click",(event)=>{
     if(event.target.id=="xButtonPopUp"){
         areYouSurePopUp.classList.remove("active");

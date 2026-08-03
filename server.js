@@ -39,7 +39,7 @@ app.get("/api/nas-movies", (req, res)=>{
 
 
 
-const db = new sqlite3.Database(".dataBase.db");
+const db = new sqlite3.Database("login-register form/dataBase.db");
 db.run(
     `CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
