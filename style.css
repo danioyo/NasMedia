@@ -255,6 +255,7 @@ body{
     margin-top: 12.5px;
     margin-bottom: 40px;
     display: flex;
+    gap: 12px;
 }
 #heroPlay{
     width:200px;
@@ -409,4 +410,8 @@ body{
     display:flex;
     margin-bottom: 2px;
     align-items:flex-end;
+}
+.movieCard:hover .movieName {
+    color: #4da2e2;
+    transition: color 0.18s ease;
 }

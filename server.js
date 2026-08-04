@@ -10,11 +10,6 @@ app.use(cors());
 app.use(express.json());
 app.use('/videos', express.static('C:/Users/danis/Desktop/videoss'));
 
-const ALLOWED_EXTENSIONS = ['.mp4', '.mkv', '.avi', '.mov', '.webm'];
-const API_KEY = '8b1e43728b1c17cc47afd3fde208e6b4';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500';
-const HERO_IMAGE_URL = 'https://image.tmdb.org/t/p/w1280';
 
 app.get("/api/nas-movies", (req, res)=>{
     fs.readdir("C:/Users/danis/Desktop/videoss", (err, files)=>{
@@ -111,19 +106,6 @@ app.post("/register", async(req,res)=>{
 
     
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

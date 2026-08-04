@@ -7,10 +7,53 @@ const profile = document.querySelector(".user-avatar");
 const profileArrow = document.querySelector(".user-avatar i")
 const profileWindowRows = document.querySelector(".profile-window-rows");
 const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
+const movieListContainer = document.querySelector(".movieListContainer");
+const movieCard = document.querySelector(".movieCard");
+
+const ALLOWED_EXTENSIONS = ['.mp4', '.mkv', '.avi', '.mov', '.webm'];
+const API_KEY = 'd1000b8f67ff7bd3a46a6fb4870e422c';
+
+async function searchMovie(movieName) {
+    const response =await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(movieName)}`)
+    const data = await response.json();
+    console.log(data);
+    const card =document.createElement("div");
+    const posterWrapper = document.createElement("div");
+    const Name = document.createElement("div");
+    const movieDate = document.createElement("div");
+    const poster = document.createElement("img");
+
+    poster.src=`https://image.tmdb.org/t/p/w300${data.results[0].poster_path}`
+
+    posterWrapper.classList.add("posterWrapper");
+    Name.classList.add("movieName");
+    poster.classList.add("movieImage");
+    movieDate.classList.add("movieDate");
+    Name.textContent = data.results[0].original_title;
+    movieDate.textContent = data.results[0].release_date;
 
 
 
 
+
+    card.classList.add("movieCard");
+    movieListContainer.appendChild(card);
+
+
+    card.appendChild(posterWrapper);
+    posterWrapper.appendChild(poster);
+    card.append(Name, movieDate);
+}
+searchMovie("Interstellar")
+async function getMovie() {
+    const response = await fetch(`http://localhost:3000/api/nas-movies`);
+    const data = await response.json();
+    console.log(data);
+    data.movies.forEach(movieFile =>{
+        
+    })
+
+}
 
 
 areYouSurePopUp.addEventListener("click",(event)=>{
@@ -45,15 +88,7 @@ profile.addEventListener("click", ()=>{
     }
     profileWindowRows.classList.toggle("active");
 })
-movieImage.addEventListener("mouseenter",()=>{
-    movieName.style.color = "#4da2e2";
-    
-})
-movieImage.addEventListener("mouseleave",()=>{
-    movieName.style.color = "white";
-    
-    
-})
+
 function moveBubble(element){
     const width = element.offsetWidth + 62;
     const left = element.offsetLeft - (62 / 2);
