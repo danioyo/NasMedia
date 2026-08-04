@@ -10,7 +10,6 @@ const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
 const movieListContainer = document.querySelector(".movieListContainer");
 const movieCard = document.querySelector(".movieCard");
 
-const ALLOWED_EXTENSIONS = ['.mp4', '.mkv', '.avi', '.mov', '.webm'];
 const API_KEY = 'd1000b8f67ff7bd3a46a6fb4870e422c';
 
 async function searchMovie(movieName) {
@@ -44,13 +43,13 @@ async function searchMovie(movieName) {
     posterWrapper.appendChild(poster);
     card.append(Name, movieDate);
 }
-searchMovie("Interstellar")
+searchMovie("the odyssey")
 async function getMovie() {
     const response = await fetch(`http://localhost:3000/api/nas-movies`);
     const data = await response.json();
     console.log(data);
     data.movies.forEach(movieFile =>{
-        
+
     })
 
 }

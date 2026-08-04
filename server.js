@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/videos', express.static('C:/Users/danis/Desktop/videoss'));
 
+const ALLOWED_EXTENSIONS = ['.mp4', '.mkv', '.avi', '.mov', '.webm'];
 
 app.get("/api/nas-movies", (req, res)=>{
     fs.readdir("C:/Users/danis/Desktop/videoss", (err, files)=>{
