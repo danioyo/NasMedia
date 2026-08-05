@@ -49,11 +49,19 @@ async function getMovie() {
     const data = await response.json();
     console.log(data);
     data.movies.forEach(movieFile =>{
-
+        if(movieFile.includes(".")){
+            const theNameArray = movieFile.split(".");
+            theNameArray.pop();
+            const theName = theNameArray.join(" ");
+            searchMovie(`${theName}`);
+        }
+        else{
+            searchMovie(`${movieFile}`);
+        }
     })
 
 }
-
+getMovie();
 
 areYouSurePopUp.addEventListener("click",(event)=>{
     if(event.target.id=="xButtonPopUp"){
