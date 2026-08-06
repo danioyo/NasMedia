@@ -2,13 +2,12 @@ const navbar = document.querySelector(".navbar");
 const navElem = document.querySelectorAll(".navbar a");
 const bubble = document.querySelector('.bubble');
 const movieImage = document.querySelector(".movieImage");
-const movieName = document.querySelector(".movieName");
+
 const profile = document.querySelector(".user-avatar");
 const profileArrow = document.querySelector(".user-avatar i")
 const profileWindowRows = document.querySelector(".profile-window-rows");
 const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
 const movieListContainer = document.querySelector(".movieListContainer");
-const movieCard = document.querySelector(".movieCard");
 
 const API_KEY = 'd1000b8f67ff7bd3a46a6fb4870e422c';
 
@@ -34,7 +33,6 @@ async function searchMovie(movieName) {
 
 
 
-
     card.classList.add("movieCard");
     movieListContainer.appendChild(card);
 
@@ -43,25 +41,23 @@ async function searchMovie(movieName) {
     posterWrapper.appendChild(poster);
     card.append(Name, movieDate);
 }
-searchMovie("the odyssey")
 async function getMovie() {
     const response = await fetch(`http://localhost:3000/api/nas-movies`);
     const data = await response.json();
     console.log(data);
     data.movies.forEach(movieFile =>{
-        if(movieFile.includes(".")){
-            const theNameArray = movieFile.split(".");
-            theNameArray.pop();
-            const theName = theNameArray.join(" ");
-            searchMovie(`${theName}`);
-        }
-        else{
-            searchMovie(`${movieFile}`);
-        }
+        const theNameArray = movieFile.split(".");
+        theNameArray.pop();
+        const theName = theNameArray.join(" ");
+        searchMovie(`${theName}`);
     })
 
 }
 getMovie();
+
+
+
+
 
 areYouSurePopUp.addEventListener("click",(event)=>{
     if(event.target.id=="xButtonPopUp"){
