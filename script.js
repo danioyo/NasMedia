@@ -2,7 +2,7 @@ const navbar = document.querySelector(".navbar");
 const navElem = document.querySelectorAll(".navbar a");
 const bubble = document.querySelector('.bubble');
 const movieImage = document.querySelector(".movieImage");
-
+const movieCard = document.querySelector(".movieCard");
 const profile = document.querySelector(".user-avatar");
 const profileArrow = document.querySelector(".user-avatar i")
 const profileWindowRows = document.querySelector(".profile-window-rows");
@@ -55,7 +55,11 @@ async function getMovie() {
 }
 getMovie();
 
-
+movieListContainer.addEventListener("click", (event)=>{
+    if(event.target.closest(".posterWrapper")){
+        window.location.href="./video-player-dir/index.html";
+    }
+})
 
 
 
