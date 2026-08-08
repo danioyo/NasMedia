@@ -59,12 +59,20 @@ async function getMovie() {
 }
 
 movieListContainer.addEventListener("click", (event)=>{
-            if(event.target.closest(".posterWrapper")){
-                const fileName = event.target.closest(".posterWrapper").dataset.fileName;
-                window.location.href=`./video-player-dir/player.html?file=${encodeURIComponent(fileName)}`;
-        }
+    if(event.target.closest(".posterWrapper")){
+        const fileName = event.target.closest(".posterWrapper").dataset.fileName;
+        window.location.href=`./video-player-dir/player.html?file=${encodeURIComponent(fileName)}`;
+    }
+
 })
+
 getMovie();
+
+movieListContainer.addEventListener("mouseenter", (event)=>{
+    if(event.target.closest(".posterWrapper")){
+        
+    }
+})
 
 
 areYouSurePopUp.addEventListener("click",(event)=>{
