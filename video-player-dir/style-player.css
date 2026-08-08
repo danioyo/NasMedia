@@ -1,0 +1,9 @@
+body{
+    margin:0;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0c0c0c, #333333);
+}
+#videoPlayer{
+    height: 100vh;
+    width:100vw;
+}
