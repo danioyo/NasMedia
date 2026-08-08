@@ -8,9 +8,25 @@ const sqlite3 = require("sqlite3").verbose();
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
+
+
+app.use('/login-register form', express.static(path.join(__dirname, 'login-register form')));
+app.use('/video-player-dir', express.static(path.join(__dirname, 'video-player-dir')));
 app.use('/videos', express.static('C:/Users/danis/Desktop/videoss'));
 
 const ALLOWED_EXTENSIONS = ['.mp4', '.mkv', '.avi', '.mov', '.webm'];
+
+app.get('/api/stream', (req, res) => {
+
+    const fileName = req.query.file;
+    const filePath = path.join("C:/Users/danis/Desktop/videoss", fileName);
+
+    res.sendFile(filePath);
+});
+
+
+
 
 app.get("/api/nas-movies", (req, res)=>{
     fs.readdir("C:/Users/danis/Desktop/videoss", (err, files)=>{

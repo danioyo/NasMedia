@@ -11,7 +11,7 @@ const movieListContainer = document.querySelector(".movieListContainer");
 
 const API_KEY = 'd1000b8f67ff7bd3a46a6fb4870e422c';
 
-async function searchMovie(movieName) {
+async function searchMovie(movieName, fileName) {
     const response =await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(movieName)}`)
     const data = await response.json();
     console.log(data);
@@ -23,6 +23,8 @@ async function searchMovie(movieName) {
 
     poster.src=`https://image.tmdb.org/t/p/w300${data.results[0].poster_path}`
 
+
+
     posterWrapper.classList.add("posterWrapper");
     Name.classList.add("movieName");
     poster.classList.add("movieImage");
@@ -30,6 +32,7 @@ async function searchMovie(movieName) {
     Name.textContent = data.results[0].original_title;
     movieDate.textContent = data.results[0].release_date;
 
+    posterWrapper.dataset.fileName = fileName;
 
 
 
@@ -49,18 +52,19 @@ async function getMovie() {
         const theNameArray = movieFile.split(".");
         theNameArray.pop();
         const theName = theNameArray.join(" ");
-        searchMovie(`${theName}`);
+        searchMovie(`${theName}`, movieFile);
+        
     })
 
 }
-getMovie();
 
 movieListContainer.addEventListener("click", (event)=>{
-    if(event.target.closest(".posterWrapper")){
-        window.location.href="./video-player-dir/index.html";
-    }
+            if(event.target.closest(".posterWrapper")){
+                const fileName = event.target.closest(".posterWrapper").dataset.fileName;
+                window.location.href=`./video-player-dir/player.html?file=${encodeURIComponent(fileName)}`;
+        }
 })
-
+getMovie();
 
 
 areYouSurePopUp.addEventListener("click",(event)=>{
