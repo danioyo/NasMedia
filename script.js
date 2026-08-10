@@ -68,9 +68,17 @@ movieListContainer.addEventListener("click", (event)=>{
 
 getMovie();
 
-movieListContainer.addEventListener("mouseenter", (event)=>{
+movieListContainer.addEventListener("mouseover", (event)=>{
+    const movieInfo = event.target.closest(".posterWrapper").querySelector(".movieInfo");
     if(event.target.closest(".posterWrapper")){
-        
+        movieInfo.classList.add("active");
+    }
+})
+movieListContainer.addEventListener("mouseout", (event)=>{
+    const poster = event.target.closest(".posterWrapper");
+    if(event.target.closest(".posterWrapper")){
+        const movieInfo = poster.querySelector(".movieInfo");
+        movieInfo.classList.remove("active");
     }
 })
 
