@@ -20,11 +20,14 @@ async function searchMovie(movieName, fileName) {
     const Name = document.createElement("div");
     const movieDate = document.createElement("div");
     const poster = document.createElement("img");
+    const movieInfo = document.createElement("span");
+
 
     poster.src=`https://image.tmdb.org/t/p/w300${data.results[0].poster_path}`
 
 
-
+    movieInfo.classList.add("movieInfo");
+    movieInfo.innerHTML = `<i class="fa-solid fa-info"></i>`;
     posterWrapper.classList.add("posterWrapper");
     Name.classList.add("movieName");
     poster.classList.add("movieImage");
@@ -32,7 +35,7 @@ async function searchMovie(movieName, fileName) {
     Name.textContent = data.results[0].original_title;
     movieDate.textContent = data.results[0].release_date;
 
-    posterWrapper.dataset.fileName = fileName;
+    poster.dataset.fileName = fileName;
 
 
 
@@ -41,7 +44,7 @@ async function searchMovie(movieName, fileName) {
 
 
     card.appendChild(posterWrapper);
-    posterWrapper.appendChild(poster);
+    posterWrapper.append(poster, movieInfo);
     card.append(Name, movieDate);
 }
 async function getMovie() {
@@ -59,8 +62,8 @@ async function getMovie() {
 }
 
 movieListContainer.addEventListener("click", (event)=>{
-    if(event.target.closest(".posterWrapper")){
-        const fileName = event.target.closest(".posterWrapper").dataset.fileName;
+    if(event.target.classList.contains("movieImage")){
+        const fileName = event.target.dataset.fileName;
         window.location.href=`./video-player-dir/player.html?file=${encodeURIComponent(fileName)}`;
     }
 
