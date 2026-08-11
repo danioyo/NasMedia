@@ -451,10 +451,14 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: -1000;
     display: flex;
     justify-content:center;
     align-items: center;
+}
+.movieInfoWrapper.active{
+    z-index: -1000;
+    opacity:1;
 }
 .movieInfoCard{
     position:fixed;
