@@ -151,3 +151,5 @@ navElem.forEach(element => {
 navbar.addEventListener("mouseleave", ()=>{
     moveToActive();
 })
+
+

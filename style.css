@@ -442,11 +442,28 @@ body{
     color: #4da2e2;
     transition: color 0.18s ease;
 }
-.movie-info-display{
-    position:relative;
-    top:50%;
-
-    width:30vw;
-    height: 80vh;
-    background-color: grey;
+.movieInfoWrapper{
+    opacity:0;
+    height: 100vh;
+    width:100vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.movieInfoCard{
+    position:fixed;
+    background-color: #0f3552;
+    width: 90%; 
+    max-width: 800px;   
+    height: auto;        
+    max-height: 85vh;    
+    border-radius: 12px; 
+    padding: 24px; 
+    overflow-y: auto;
 }
