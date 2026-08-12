@@ -85,6 +85,22 @@ movieListContainer.addEventListener("mouseout", (event)=>{
     }
 })
 
+const movieInfoWrapper = document.querySelector(".movieInfoWrapper");
+const closeButton = document.querySelector("#closeButton");
+
+movieListContainer.addEventListener("click", (event) => {
+    if (event.target.closest(".movieInfo")) {
+        movieInfoWrapper.classList.add("active");
+    }
+    
+
+    
+});
+movieInfoWrapper.addEventListener("click", (event)=>{
+    if(event.target.closest("#closeButton")){
+        movieInfoWrapper.classList.remove("active");
+    }
+})
 
 areYouSurePopUp.addEventListener("click",(event)=>{
     if(event.target.id=="xButtonPopUp"){
