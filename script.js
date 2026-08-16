@@ -88,7 +88,7 @@ movieListContainer.addEventListener("mouseout", (event)=>{
 const movieInfoWrapper = document.querySelector(".movieInfoWrapper");
 const closeButton = document.querySelector("#closeButton");
 
-movieListContainer.addEventListener("click", (event) => {
+movieListContainer.addEventListener("click", async(event) => {
      const movieInfoBtn = event.target.closest(".movieInfo");
      if (movieInfoBtn) {
         movieInfoWrapper.classList.add("active");
@@ -98,10 +98,24 @@ movieListContainer.addEventListener("click", (event) => {
         const movieImage = card.querySelector(".movieImage");
         const rawFileName = movieImage.getAttribute("data-file-name");
         trailerTitle.textContent = rawFileName.split(".").slice(0,-1).join(" ");
-        const response = await fetch("")
+        const response_0 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(rawFileName.split(".").slice(0,-1).join(" "))}`);
+        const data_0 = await response_0.json();
+        const description = data_0.results[0].overview;
+        const overview = movieInfoWrapper.querySelector(".overview");
+        overview.textContent = description;
+        const movieId = data_0.results[0].id;
+        const releaseYear = movieInfoWrapper.querySelector(".releaseYear");
+        releaseYear.textContent = data_0.results[0].release_date.slice(0, 4);
+        const data_1 = await(await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits,videos`)).json();
+        console.log(data_1);
 
+        const duration = data_1.runtime;
+        const hours = Math.floor(duration/60);
+        const minutes = duration % 60;
+        const durationElem = movieInfoWrapper.querySelector(".duration");
+        durationElem.textContent = `${hours}h ${minutes}m`
 
-
+        const genres = data_1.genres;
     }
     
 
