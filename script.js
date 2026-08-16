@@ -89,8 +89,19 @@ const movieInfoWrapper = document.querySelector(".movieInfoWrapper");
 const closeButton = document.querySelector("#closeButton");
 
 movieListContainer.addEventListener("click", (event) => {
-    if (event.target.closest(".movieInfo")) {
+     const movieInfoBtn = event.target.closest(".movieInfo");
+     if (movieInfoBtn) {
         movieInfoWrapper.classList.add("active");
+        const trailerInfoOverlay = document.querySelector(".trailerInfoOverlay");
+        const trailerTitle = document.querySelector(".trailerTitle");
+        const card = movieInfoBtn.closest(".movieCard");
+        const movieImage = card.querySelector(".movieImage");
+        const rawFileName = movieImage.getAttribute("data-file-name");
+        trailerTitle.textContent = rawFileName.split(".").slice(0,-1).join(" ");
+        const response = await fetch("")
+
+
+
     }
     
 
@@ -100,6 +111,7 @@ movieInfoWrapper.addEventListener("click", (event)=>{
     if(event.target.closest("#closeButton")){
         movieInfoWrapper.classList.remove("active");
     }
+
 })
 
 areYouSurePopUp.addEventListener("click",(event)=>{
