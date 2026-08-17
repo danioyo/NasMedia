@@ -116,6 +116,17 @@ movieListContainer.addEventListener("click", async(event) => {
         durationElem.textContent = `${hours}h ${minutes}m`
 
         const genres = data_1.genres;
+        const genresElement = document.getElementById("genres");
+        genresElement.textContent = genres.map(g => g.name ).slice(0,3).join(", ");
+
+        const castElement = document.getElementById("cast");
+        const cast = data_1.credits.cast;
+        castElement.textContent = cast.map(c => c.name).slice(0,4).join(", ");
+
+        const trailer = data_1.videos.results.find(v => v.site === "YouTube" && v.type === "Trailer")
+        || data_1.videos.results.find(v => v.site === "YouTube" && v.type === "Teaser")
+        ||data_1.videos.results[0];
+        
     }
     
 
