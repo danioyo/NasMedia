@@ -98,15 +98,18 @@ movieListContainer.addEventListener("click", async(event) => {
         const movieImage = card.querySelector(".movieImage");
         const rawFileName = movieImage.getAttribute("data-file-name");
         trailerTitle.textContent = rawFileName.split(".").slice(0,-1).join(" ");
+
         const response_0 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(rawFileName.split(".").slice(0,-1).join(" "))}`);
         const data_0 = await response_0.json();
+
         const description = data_0.results[0].overview;
         const overview = movieInfoWrapper.querySelector(".overview");
         overview.textContent = description;
         const movieId = data_0.results[0].id;
         const releaseYear = movieInfoWrapper.querySelector(".releaseYear");
         releaseYear.textContent = data_0.results[0].release_date.slice(0, 4);
-        const data_1 = await(await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits,videos`)).json();
+
+        const data_1 = await(await fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=credits,videos,release_dates`)).json();
         console.log(data_1);
 
         const duration = data_1.runtime;
@@ -126,8 +129,39 @@ movieListContainer.addEventListener("click", async(event) => {
         const trailer = data_1.videos.results.find(v => v.site === "YouTube" && v.type === "Trailer")
         || data_1.videos.results.find(v => v.site === "YouTube" && v.type === "Teaser")
         ||data_1.videos.results[0];
+        const container = document.getElementById("trailer-container");
+        if (trailer && trailer.key) {
+        const embedUrl = `https://www.youtube.com/embed/${trailer.key}`;
         
-    }
+        container.innerHTML = `
+            <iframe 
+            width="560" 
+            height="315" 
+            src="${embedUrl}" 
+            title="${trailer.name || 'Trailer'}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+            </iframe>
+        `;
+        } else {
+        container.innerHTML = `<p>Nu a fost găsit niciun trailer disponibil.</p>`;
+        }
+
+
+
+
+
+        
+        const ageRated = data_1.release_dates?.results.find(a=> a.iso_3166_1 =="US")?.release_dates[0]?.certification 
+        ||  data_1.release_dates?.results.find(a=> a.iso_3166_1 =="CH")?.release_dates[0]?.certification
+        ||  data_1.release_dates?.results.find(a=> a.iso_3166_1 =="RO")?.release_dates[0]?.certification;
+        const ageRatedElement = document.querySelector("#ageRated");
+        ageRatedElement.textContent = ageRated;
+
+
+
+    }  
     
 
     
