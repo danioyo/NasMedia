@@ -9,6 +9,7 @@ const profileWindowRows = document.querySelector(".profile-window-rows");
 const areYouSurePopUp = document.querySelector(".areYouSurePopUp");
 const movieListContainer = document.querySelector(".movieListContainer");
 
+let currentSelectedFile="";
 const API_KEY = 'd1000b8f67ff7bd3a46a6fb4870e422c';
 
 async function searchMovie(movieName, fileName) {
@@ -97,6 +98,9 @@ movieListContainer.addEventListener("click", async(event) => {
         const card = movieInfoBtn.closest(".movieCard");
         const movieImage = card.querySelector(".movieImage");
         const rawFileName = movieImage.getAttribute("data-file-name");
+        currentSelectedFile = rawFileName;
+
+
         trailerTitle.textContent = rawFileName.split(".").slice(0,-1).join(" ");
 
         const response_0 = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(rawFileName.split(".").slice(0,-1).join(" "))}`);
@@ -130,24 +134,18 @@ movieListContainer.addEventListener("click", async(event) => {
         || data_1.videos.results.find(v => v.site === "YouTube" && v.type === "Teaser")
         ||data_1.videos.results[0];
         const container = document.getElementById("trailer-container");
-        if (trailer && trailer.key) {
-        const embedUrl = `https://www.youtube.com/embed/${trailer.key}`;
-        
-        container.innerHTML = `
-            <iframe 
-            width="560" 
-            height="315" 
-            src="${embedUrl}" 
-            title="${trailer.name || 'Trailer'}" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-            </iframe>
-        `;
-        } else {
-        container.innerHTML = `<p>Nu a fost găsit niciun trailer disponibil.</p>`;
-        }
 
+        const embedUrl = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&controls=0&mute=1&rel=0&playsinline=1`;
+
+        container.innerHTML = `
+        <iframe
+            src="${embedUrl}"
+            frameborder="0"
+            style="pointer-events: none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+        `;
 
 
 
@@ -166,6 +164,45 @@ movieListContainer.addEventListener("click", async(event) => {
 
     
 });
+const trailerPlayButton = document.querySelector("#trailerPlayButton");
+
+trailerPlayButton.addEventListener("click", () => {
+    if (currentSelectedFile) {
+        window.location.href = `./video-player-dir/player.html?file=${encodeURIComponent(currentSelectedFile)}`;
+    }
+});
+const bigImage = document.querySelector(".bigImage");
+
+let movies = [];
+let index = 0;
+
+const heroTitle = document.querySelector('.heroTitle');
+
+
+async function showMovie() {
+    const heroDescription = document.querySelector(".heroDescription")
+    heroTitle.textContent = movies[index].split(".").slice(0,-1).join(" ");
+    const data =await (await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(movies[index].split(".").slice(0,-1).join(" "))}`)).json();
+    heroDescription.textContent = data.results[0].overview;
+    
+}
+
+async function loadMovies() {
+    const res = await fetch('/api/nas-movies');
+    const data = await res.json();
+    movies = data.movies;
+    showMovie(); 
+
+    setInterval(() => {
+        index = (index + 1) % movies.length;
+        showMovie();
+    }, 12000); 
+}
+
+loadMovies();
+
+
+
 movieInfoWrapper.addEventListener("click", (event)=>{
     if(event.target.closest("#closeButton")){
         movieInfoWrapper.classList.remove("active");
